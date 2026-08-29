@@ -64,3 +64,25 @@ def split_dataframe(dataframe):
         random_state=42)
 
     return train_df, val_df, test_df
+
+class CoconutDataset(Dataset):
+
+    def __init__(self, dataframe, transform):
+        self.dataframe = dataframe.reset_index(drop=True)
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.dataframe)
+
+    def __getitem__(self, index):
+
+        image_path = self.dataframe.iloc[index]['image_path']
+        label = self.dataframe.iloc[index]['label']
+
+        image = Image.open(image_path).convert('RGB')
+        image = self.transform(image)
+
+        label = label_map[label]
+
+        return image, label
+
