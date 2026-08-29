@@ -49,3 +49,18 @@ def create_dataframe(data_dir):
 
     return dataframe
 
+def split_dataframe(dataframe):
+
+    train_df, temp_df = train_test_split(
+        dataframe,
+        test_size=0.3,
+        stratify=dataframe['label'],
+        random_state=42)
+
+    val_df, test_df = train_test_split(
+        temp_df,
+        test_size=0.5,
+        stratify=temp_df['label'],
+        random_state=42)
+
+    return train_df, val_df, test_df
