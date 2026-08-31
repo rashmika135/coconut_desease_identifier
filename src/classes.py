@@ -3,10 +3,8 @@ class_names = [
     'CCI',
     'WCLWD_Yellowing',
     'WCLWD_Flaccidity',
-    'WCLWD_Drying'
-]
+    'WCLWD_Drying']
 
 label_map = {
     name: index
-    for index, name in enumerate(class_names)
-}
+    for index, name in enumerate(class_names)}
