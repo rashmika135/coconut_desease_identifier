@@ -17,25 +17,20 @@ app = FastAPI(
     version='1.0.0'
 )
 
-app.mount(
-    '/static',
+app.mount('/static',
     StaticFiles(directory=frontend_dir),
-    name='static'
-)
+    name='static')
 
 
 @app.get('/')
 def home():
     return FileResponse(
-        frontend_dir / 'index.html'
-    )
+        frontend_dir / 'index.html')
 
 
 @app.get('/health')
 def health():
-    return {
-        'status': 'ok'
-    }
+    return {'status': 'ok'}
 
 
 @app.post('/predict')
@@ -44,25 +39,19 @@ async def predict(file: UploadFile = File(...)):
     if file.content_type is None or not file.content_type.startswith('image/'):
         raise HTTPException(
             status_code=400,
-            detail='Please upload a valid image file.'
-        )
+            detail='Please upload a valid image file.')
 
     try:
         image_data = await file.read()
         image = Image.open(
-            io.BytesIO(image_data)
-        )
+            io.BytesIO(image_data) )
         image.load()
 
     except (UnidentifiedImageError, OSError):
         raise HTTPException(
             status_code=400,
-            detail='The uploaded file could not be read as an image.'
-        )
+            detail='The uploaded file could not be read as an image.')
 
     prediction, confidence = predict_image(image)
 
-    return {
-        'prediction': prediction,
-        'confidence': confidence
-    }
+    return {'prediction': prediction,'confidence': confidence}
