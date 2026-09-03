@@ -6,6 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
     <title>Coconut Disease Detector</title>
+    <link rel='stylesheet' href='/static/style.css'>
 
 </head>
 
@@ -16,39 +17,21 @@
         <h1>Coconut Disease Detector</h1>
 
         <p class='description'>
-            Upload a coconut leaf image to identify its condition.
-        </p>
+            Upload a coconut leaf image to identify its condition.</p>
 
         <div class='upload-box'>
 
-            <input
-                type='file'
-                id='imageInput'
-                accept='image/*'
-            >
+            <input type='file'id='imageInput'accept='image/*'>
 
-            <img
-                id='preview'
-                class='preview'
-                alt='Image preview'
-            >
+            <img id='preview'class='preview'alt='Image preview'>
 
-            <button
-                id='predictButton'
-                disabled
-            >
-                Predict
-            </button>
+            <button id='predictButton' disabled>Predict</button>
 
         </div>
 
-        <div
-            id='result'
-            class='result'
-        ></div>
-
-    </div>
-
+        <div id='result' class='result'></div>
+</div>
+<script src='/static/script.js'></script>
 </body>
 
 </html>
