@@ -1,37 +1,73 @@
 <!DOCTYPE html>
-<html lang='en'>
-
+<html lang="en">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coconut Disease Detector</title>
-    <link rel='stylesheet' href='/static/style.css'>
-
+    <link rel="stylesheet" href="/static/style.css">
 </head>
-
 <body>
 
-    <div class='container'>
-
-        <h1>Coconut Disease Detector</h1>
-
-        <p class='description'>
-            Upload a coconut leaf image to identify its condition.</p>
-
-        <div class='upload-box'>
-
-            <input type='file'id='imageInput'accept='image/*'>
-
-            <img id='preview'class='preview'alt='Image preview'>
-
-            <button id='predictButton' disabled>Predict</button>
-
+    <div class="container">
+        <div class="header">
+            <div class="icon">🌴</div>
+            <h1>Coconut Disease Detector</h1>
+            <p class="description">
+                Upload a clear coconut leaf image to identify its condition.
+            </p>
         </div>
 
-        <div id='result' class='result'></div>
-</div>
-<script src='/static/script.js'></script>
-</body>
+        <div class="upload-box">
+            <label for="imageInput" class="file-label">
+                Choose Leaf Image
+            </label>
 
+            <input type="file" id="imageInput" accept="image/*">
+            <p id="fileName" class="file-name">No image selected</p>
+
+            <img id="preview" class="preview" alt="Selected coconut leaf preview">
+
+            <button id="predictButton" disabled>Analyze Leaf</button>
+        </div>
+
+        <div id="result" class="result">
+            <p class="result-label">Analysis Result</p>
+            <h2 id="predictionText"></h2>
+
+            <div class="confidence-row">
+                <span>Model confidence</span>
+                <strong id="confidenceText"></strong>
+            </div>
+
+            <div class="confidence-bar">
+                <div id="confidenceFill" class="confidence-fill"></div>
+            </div>
+
+            <div class="condition-info">
+                <h3>About this result</h3>
+
+                <p>
+                    <strong>What it means:</strong>
+                    <span id="meaningText"></span>
+                </p>
+
+                <p>
+                    <strong>Possible cause:</strong>
+                    <span id="causeText"></span>
+                </p>
+
+                <p>
+                    <strong>What you can do:</strong>
+                    <span id="actionText"></span>
+                </p>
+            </div>
+        </div>
+
+        <p class="disclaimer">
+            Experimental machine-learning system. Results should not replace professional agricultural advice.
+        </p>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
 </html>
